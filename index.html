@@ -69,6 +69,9 @@
             
         </a-assets>
 
+<a-sky src="textures/sky1.png" rotation="0 0 0"></a-sky>
+
+        
        <!-- Enhanced Camera with Mobile Controls -->
 <a-entity id="cameraRig" movement-controls="fly: true; speed: 0.35" position="-5 1.4 20">
     <!-- Camera entity with look-controls and virtual joystick -->
@@ -110,16 +113,16 @@
         <!-- Floor with Azulejos -->
     <a-plane position="0 0 0" rotation="-90 0 0" width="125" height="125" src="#azulejos" repeat="10 10"></a-plane>
         
-        <a-plane position="0 6 0" rotation="90 0 0" width="125" height="125" src="#ceiling" repeat="10 10"></a-plane>
+        
 
         
         
         
         <!-- Exterior Walls -->
-        <a-box position="-62.5 3 0" width="0.16" height="6" depth="125" color="#F1BF00"></a-box>  <!-- Left Wall -->
-        <a-box position="62.5 3 0" width="0.16" height="6" depth="125" color="#F1BF00"></a-box>   <!-- Right Wall -->
-        <a-box position="0 3 -62.5" width="125" height="6" depth="0.16" color="#AA151B"></a-box>  <!-- Back Wall -->
-        <a-box position="0 3 62.5" width="125" height="6" depth="0.16" color="#AA151B"></a-box>   <!-- Front Wall -->
+        <a-box position="-62.5 3 0" width="0.16" height="3" depth="125" color="#F1BF00"></a-box>  <!-- Left Wall -->
+        <a-box position="62.5 3 0" width="0.16" height="3" depth="125" color="#F1BF00"></a-box>   <!-- Right Wall -->
+        <a-box position="0 3 -62.5" width="125" height="3" depth="0.16" color="#AA151B"></a-box>  <!-- Back Wall -->
+        <a-box position="0 3 62.5" width="125" height="3" depth="0.16" color="#AA151B"></a-box>   <!-- Front Wall -->
 
         <!-- Cubes -->
         <script>
