@@ -359,26 +359,28 @@ sounds.forEach((sound) => {
         cube.setAttribute('depth', '3');
         document.querySelector('a-scene').appendChild(cube);
 
-        // Randomly assign action to cube: play sound, open link, or do nothing
-        const actionType = Math.floor(Math.random() * 3); // 0, 1, or 2
+       // Randomly assign action to cube: play sound, open link, or do nothing
+const actionType = Math.floor(Math.random() * 3); // Randomly choose 0, 1, or 2
 
-        if (actionType === 0) {
-            // Play sound
-            const soundId = `${imgId}-sound`;
-            cube.addEventListener('click', () => {
-                const sound = document.getElementById(soundId);
-                if (sound) {
-                    sound.play();
-                }
-            });
-       } else if (actionType === 1) {
-                    // Open link
-                    cube.addEventListener('click', () => {
-                        window.open(urls[i], '_blank'); // Use the URL corresponding to the current index
-                    });
-                }
-        // If actionType is 2, do nothing
-    }
+if (actionType === 0) {
+    // Play sound
+    const soundId = `${imgId}-sound`;
+    cube.addEventListener('click', () => {
+        const sound = document.getElementById(soundId);
+        if (sound) {
+            sound.play(); // Play the sound associated with the cube
+        }
+    });
+} else if (actionType === 1) {
+    // Open link
+    cube.addEventListener('click', () => {
+        window.open(urls[i], '_blank'); // Open the URL corresponding to the current index
+    });
+} else if (actionType === 2) {
+    // Do nothing
+    // This branch intentionally left blank or can include a comment for clarity.
+}
+
 </script>
 
         </script>
