@@ -67,6 +67,17 @@
                     "White",  "Window", "Yellow"
 ];
 
+const urls = [
+    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
+    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
+    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
+    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
+    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
+    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
+    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
+    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
+    "https://visulang.app"  // Add 41 links
+];
 images.forEach((img) => {
     const imgPath = `images/${img}.png`;
     const imgElement = document.createElement('img');
@@ -128,12 +139,12 @@ sounds.forEach((sound) => {
                     sound.play();
                 }
             });
-        } else if (actionType === 1) {
-            // Open link
-            cube.addEventListener('click', () => {
-                window.open('https://example.com', '_blank'); // Replace with the actual URL
-            });
-        }
+       } else if (actionType === 1) {
+                    // Open link
+                    cube.addEventListener('click', () => {
+                        window.open(urls[i], '_blank'); // Use the URL corresponding to the current index
+                    });
+                }
         // If actionType is 2, do nothing
     }
 </script>
