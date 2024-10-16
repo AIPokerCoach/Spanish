@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Immersive Spanish: Visulang’s Mnemonic VR Experience</title>
-    <meta name="description" content="Learn Spanish through playful mnemonics in a virtual world!">
-    
+    <meta name="description" content="Learn Spanish through playful mnemonics in a virtual world! Our innovative method uses vibrant image associations to make language learning fun and effective. Designed for all learners, including those with special needs, we ensure everyone can thrive in their Spanish language journey.">
+
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <style>
         body { margin: 0; }
         a-scene { height: 100vh; }
     </style>
+    
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+
 </head>
 <body>
     <a-scene>
-        
+
+        <a-assets>
+            <!-- Load images -->
             <script>
                 const images = [
-                     "Aexplainer1", "Aexplainer2", "Aflag", "Aimage", "Airplane", "Almond", "Ankle", "Apple", "Apron", "Arm", "Art", "Baby", "Bag",
+                    "Aexplainer1", "Aexplainer2", "Aflag", "Aimage", "Airplane", "Almond", "Ankle", "Apple", "Apron", "Arm", "Art", "Baby", "Bag",
                     "Ball", "Balloon", "Bathroom", "Bear", "Bed", "Bee", "Belt", "Bench", "Bicycle", "Bimage",
                     "Bird", "Boat", "Bone", "Book", "Bottle", "Bowl", "Box", "Bracelet", "Brain",
                     "Bread", "Broom", "Bucket", "Cake", "Candy", "Car", "Carrot", "Castle", "Cat",
@@ -39,350 +44,96 @@
                     "Taco", "Tea", "Teacher", "Ten", "Three", "Timage", "Toaster", "Tomato", "Tree", 
                     "Triangle", "Truck", "Two", "Uimage", "Vimage", "Wallet", "Want", "Water", "Watermelon", "Wheel", 
                     "White", "Wimage", "Window", "Ximage", "Yellow", "Yimage", "Zexplainer1", "Zexplainer2", "Zflag", "Zimage"
-
                 ];
+           
+                images.forEach((img) => {
+                    const imgPath = `images/${img}.png`;
+                    const imgElement = document.createElement('img');
+                    imgElement.setAttribute('id', img.toLowerCase());
+                    imgElement.setAttribute('src', imgPath);
+                    document.body.appendChild(imgElement);
+                });
 
-                const sounds = [
-     "Airplane", "Almond", "Ankle", "Apple", "Apron", "Arm", "Art", "Baby", "Bag",
-                    "Ball", "Balloon", "Bathroom", "Bear", "Bed", "Bee", "Belt", "Bench", "Bicycle", 
-                    "Bird", "Boat", "Bone", "Book", "Bottle", "Bowl", "Box", "Bracelet", "Brain",
-                    "Bread", "Broom", "Bucket", "Cake", "Candy", "Car", "Carrot", "Castle", "Cat",
-                    "Chair", "Cheese", "Cherry", "Chicken", "Chocolate",  "Clock", "Coffee", "Coin",
-                    "Cold", "Cookie", "Couch", "Cow",  "Doctor", "Dog", "Doll", "Door", "Dress",
-                    "Duck", "Earring",  "Egg", "Eight",  "Eye", "Face", "Farm",  "Finger", "Fire",
-                    "Fish", "Five", "Flour", "Flower", "Fork", "Four", "Fruit", "Garlic",  "Glass",
-                    "Glove", "Grape", "Green", "Hand", "Hat", "Head", "Health", "Heart", "Heavy",
-                    "Help",  "History", "Hook", "Horse", "Hose", "Hospital", "Hot", "House", 
-                    "Husband",  "Jug", "Key",  "Kite", "Knife", "Large", "Left", "Leg", "Lemon",
-                    "Lentil",  "Lion", "Long", "Luggage", "Man", "Mattress", "Milk",  "Mirror",
-                    "Money", "Monkey", "Month", "Morning", "Mouse", "Mouth", "Mushroom", "Name",
-                    "Nest",  "Nine", "North", "Nose", "Oat",  "Office", "Oflag", "Oil",  "One", "Onion",
-                    "Oven", "Owl", "Oxygen", "Pants", "Pear", "Pen", "Pencil", "Pepper", "Pig", 
-                    "Pink", "Plum", "Pool", "Popcorn", "Purple",  "Rabbit", "Rag", "Red", "Rice", 
-                    "Salt", "Sandal", "Scissors", "Scooter", "Seven", "Shampoo", "Sheep", "Shirt",
-                    "Shoe", "Short", "Shovel",  "Sister", "Six", "Skin", "Small", "Smile", "Snake",
-                    "Sock", "Soup", "South", "Spinach", "Spoon", "Strawberry", "Study", "Table",
-                    "Taco", "Tea", "Teacher", "Ten", "Three",  "Toaster", "Tomato", "Tree", 
-                    "Triangle", "Truck", "Two",  "Wallet", "Want", "Water", "Watermelon", "Wheel", 
-                    "White",  "Window", "Yellow"
-];
+                const azulejosElement = document.createElement('img');
+            azulejosElement.setAttribute('id', 'azulejos');
+            azulejosElement.setAttribute('src', 'textures/Azulejos.png'); // Updated path
+            document.body.appendChild(azulejosElement);
 
-const urls = [
-    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
-    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
-    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
-    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
-    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
-    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
-    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
-    "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app", "https://visulang.app",
-    "https://visulang.app"  // Add 41 links
-];
+    const ceilingElement = document.createElement('img');
+    ceilingElement.setAttribute('id', 'ceiling');
+    ceilingElement.setAttribute('src', 'textures/Ceiling.png'); // Update the path if necessary
+    document.body.appendChild(ceilingElement);
+</script>
+            
+        </a-assets>
 
-const actionTypes = [
-    1, // Cube 1
-    1, // Cube 2
-    1, // Cube 3
-    1, // Cube 4
-    0, // Cube 5
-    0, // Cube 6
-    0, // Cube 7
-    0, // Cube 8
-    0, // Cube 9
-    0, // Cube 10
-    0, // Cube 11
-    0, // Cube 12
-    0, // Cube 13
-    0, // Cube 14
-    0, // Cube 15
-    0, // Cube 16
-    0, // Cube 17
-    0, // Cube 18
-    0, // Cube 19
-    0, // Cube 20
-    0, // Cube 21
-    0, // Cube 22
-    1, // Cube 23
-    0, // Cube 24
-    0, // Cube 25
-    0, // Cube 26
-    0, // Cube 27
-    0, // Cube 28
-    0, // Cube 29
-    0, // Cube 30
-    0, // Cube 31
-    0, // Cube 32
-    0, // Cube 33
-    0, // Cube 34
-    0, // Cube 35
-    0, // Cube 36
-    0, // Cube 37
-    0, // Cube 38
-    0, // Cube 39
-    0, // Cube 40
-    0, // Cube 41
-    0, // Cube 42
-    0, // Cube 43
-    0, // Cube 44
-    0, // Cube 45
-    0, // Cube 46
-    1, // Cube 47
-    0, // Cube 48
-    0, // Cube 49
-    0, // Cube 50
-    0, // Cube 51
-    0, // Cube 52
-    0, // Cube 53
-    0, // Cube 54
-    1, // Cube 55
-    0, // Cube 56
-    0, // Cube 57
-    0, // Cube 58
-    0, // Cube 59
-    0, // Cube 60
-    0, // Cube 61
-    0, // Cube 62
-    1, // Cube 63
-    1, // Cube 64
-    1, // Cube 65
-    0, // Cube 66
-    0, // Cube 67
-    1, // Cube 68
-    0, // Cube 69
-    0, // Cube 70
-    0, // Cube 71
-    1, // Cube 72
-    0, // Cube 73
-    0, // Cube 74
-    0, // Cube 75
-    0, // Cube 76
-    0, // Cube 77
-    0, // Cube 78
-    0, // Cube 79
-    0, // Cube 80
-    0, // Cube 81
-    0, // Cube 82
-    1, // Cube 83
-    0, // Cube 84
-    0, // Cube 85
-    0, // Cube 86
-    0, // Cube 87
-    0, // Cube 88
-    0, // Cube 89
-    0, // Cube 90
-    0, // Cube 91
-    0, // Cube 92
-    0, // Cube 93
-    0, // Cube 94
-    1, // Cube 95
-    0, // Cube 96
-    0, // Cube 97
-    0, // Cube 98
-    0, // Cube 99
-    0, // Cube 100
-    0, // Cube 101
-    0, // Cube 102
-    0, // Cube 103
-    1, // Cube 104
-    1, // Cube 105
-    1, // Cube 106
-    1, // Cube 107
-    1, // Cube 108
-    0, // Cube 109
-    0, // Cube 110
-    1, // Cube 111
-    0, // Cube 112
-    0, // Cube 113
-    0, // Cube 114
-    0, // Cube 115
-    0, // Cube 116
-    0, // Cube 117
-    0, // Cube 118
-    1, // Cube 119
-    0, // Cube 120
-    0, // Cube 121
-    0, // Cube 122
-    0, // Cube 123
-    0, // Cube 124
-    0, // Cube 125
-    1, // Cube 126
-    0, // Cube 127
-    0, // Cube 128
-    0, // Cube 129
-    0, // Cube 130
-    0, // Cube 131
-    0, // Cube 132
-    0, // Cube 133
-    0, // Cube 134
-    0, // Cube 135
-    0, // Cube 136
-    1, // Cube 137
-    0, // Cube 138
-    0, // Cube 139
-    0, // Cube 140
-    0, // Cube 141
-    1, // Cube 142
-    1, // Cube 143
-    0, // Cube 144
-    1, // Cube 145
-    0, // Cube 146
-    1, // Cube 147
-    0, // Cube 148
-    0, // Cube 149
-    0, // Cube 150
-    0, // Cube 151
-    0, // Cube 152
-    0, // Cube 153
-    0, // Cube 154
-    0, // Cube 155
-    0, // Cube 156
-    0, // Cube 157
-    0, // Cube 158
-    1, // Cube 159
-    0, // Cube 160
-    0, // Cube 161
-    0, // Cube 162
-    0, // Cube 163
-    0, // Cube 164
-    1, // Cube 165
-    0, // Cube 166
-    0, // Cube 167
-    0, // Cube 168
-    0, // Cube 169
-    1, // Cube 170
-    0, // Cube 171
-    0, // Cube 172
-    0, // Cube 173
-    0, // Cube 174
-    0, // Cube 175
-    0, // Cube 176
-    0, // Cube 177
-    0, // Cube 178
-    0, // Cube 179
-    0, // Cube 180
-    0, // Cube 181
-    1, // Cube 182
-    0, // Cube 183
-    0, // Cube 184
-    0, // Cube 185
-    0, // Cube 186
-    0, // Cube 187
-    0, // Cube 188
-    0, // Cube 189
-    0, // Cube 190
-    0, // Cube 191
-    0, // Cube 192
-    0, // Cube 193
-    0, // Cube 194
-    0, // Cube 195
-    0, // Cube 196
-    0, // Cube 197
-    0, // Cube 198
-    0, // Cube 199
-    0, // Cube 200
-    0, // Cube 201
-    1, // Cube 202
-    0, // Cube 203
-    0, // Cube 204
-    0, // Cube 205
-    0, // Cube 206
-    0, // Cube 207
-    0, // Cube 208
-    1, // Cube 209
-    1, // Cube 210
-    0, // Cube 211
-    0, // Cube 212
-    0, // Cube 213
-    0, // Cube 214
-    0, // Cube 215
-    0, // Cube 216
-    1, // Cube 217
-    0, // Cube 218
-    1, // Cube 219
-    0, // Cube 220
-    1, // Cube 221
-    1, // Cube 222
-    1, // Cube 223
-    1, // Cube 224
-    1  // Cube 225
-];
+<a-sky src="textures/spanishvr1.jpg" rotation="0 0 0"></a-sky>
 
+        
+       <!-- Enhanced Camera with Mobile Controls -->
+<a-entity id="cameraRig" movement-controls="fly: true; speed: 0.35" position="-5 1.4 20">
+    <!-- Camera entity with look-controls and virtual joystick -->
+    <a-camera look-controls>
+        <!-- Virtual joystick for movement on mobile -->
+        <a-entity id="left-hand" joystick="hand: left; mode: touch"></a-entity>
+        <a-entity id="right-hand" joystick="hand: right; mode: touch"></a-entity>
+        <a-cursor color="#FF0000"></a-cursor>
+    </a-camera>
+</a-entity>
 
+ <script>
+        // Ensure the script runs after the scene and elements have fully loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            const cameraRig = document.getElementById('cameraRig');
+            const camera = document.querySelector('#mainCamera');
 
+            // Listen for the wheel event to detect scroll
+            window.addEventListener('wheel', function(event) {
+                // Set the movement speed for the scroll amount
+                const scrollSpeed = 0.5; // Adjust this value to control scroll sensitivity
+
+                // Calculate the movement direction
+                const direction = new THREE.Vector3();
+                camera.object3D.getWorldDirection(direction);
+
+                // Determine scroll direction (forward or backward)
+                const delta = event.deltaY > 0 ? -scrollSpeed : scrollSpeed;
+
+                // Adjust the position of the camera rig using the direction vector
+                const newPosition = cameraRig.object3D.position.clone().add(direction.multiplyScalar(delta));
                 
-images.forEach((img) => {
-    const imgPath = `images/${img}.png`;
-    const imgElement = document.createElement('img');
-    imgElement.setAttribute('id', img.toLowerCase());
-    imgElement.setAttribute('src', imgPath);
-    document.body.appendChild(imgElement);
-});
+                // Apply the new position to the camera rig
+                cameraRig.object3D.position.set(newPosition.x, newPosition.y, newPosition.z);
+            });
+        });
+    </script>
 
-// Add sound elements
-sounds.forEach((sound) => {
-    const soundPath = `sounds/${sound}.mp3`; // or .wav, depending on your sound files
-    const soundElement = document.createElement('audio');
-    soundElement.setAttribute('id', sound.toLowerCase());
-    soundElement.setAttribute('src', soundPath);
-    document.body.appendChild(soundElement);
-});
-            </script>
+        <!-- Floor with Azulejos -->
+    <!-- Transparent Glass-Like Floor -->
+<a-plane position="0 0 0" rotation="-90 0 0" width="125" height="125" color="#D3D3D3" opacity="0.7" transparent="true"></a-plane>
+
         
 
-        <a-sky src="textures/spanishvr1.jpg" rotation="0 0 0"></a-sky>
-
-        <!-- Enhanced Camera -->
-        <a-entity id="cameraRig" movement-controls="fly: true; speed: 0.35" position="-5 1.4 20">
-            <a-camera look-controls>
-                <a-cursor color="#FF0000"></a-cursor>
-            </a-camera>
-        </a-entity>
-
+        <!-- Cubes -->
         <script>
+            const spacing = 7.2; // Spacing between cubes
+            const rows = 15; // Rows
+            const cols = 15; // Columns
             
-    // Create cubes with sound, link, or no action
-    const spacing = 7.2;
-    const rows = 15;
-    const cols = 15;
+            for (let i = 0; i < images.length; i++) {
+                const x = (i % cols) * spacing - (cols * spacing) / 2 + spacing / 2;
+                const z = Math.floor(i / cols) * spacing - (rows * spacing) / 2 + spacing / 2;
+                const imgId = images[i].toLowerCase();
 
-    for (let i = 0; i < images.length; i++) {
-        const x = (i % cols) * spacing - (cols * spacing) / 2 + spacing / 2;
-        const z = Math.floor(i / cols) * spacing - (rows * spacing) / 2 + spacing / 2;
-        const imgId = images[i].toLowerCase();
-
-        // Create a cube for each image
-        const cube = document.createElement('a-box');
-        cube.setAttribute('src', `#${imgId}`);
-        cube.setAttribute('position', `${x} 1.5 ${z}`);
-        cube.setAttribute('width', '3');
-        cube.setAttribute('height', '3');
-        cube.setAttribute('depth', '3');
-        document.querySelector('a-scene').appendChild(cube);
-
-       // Randomly assign action to cube: play sound, open link, or do nothing
-const actionType = Math.floor(Math.random() * 3); // Randomly choose 0, 1, or 2
-
-if (actionType === 0) {
-    // Play sound
-    const soundId = `${imgId}-sound`;
-    cube.addEventListener('click', () => {
-        const sound = document.getElementById(soundId);
-        if (sound) {
-            sound.play(); // Play the sound associated with the cube
-        }
-    });
-} else if (actionType === 1) {
-    // Open link
-    cube.addEventListener('click', () => {
-        window.open(urls[i], '_blank'); // Open the URL corresponding to the current index
-    });
-} else if (actionType === 2) {
-    // Do nothing
-    // This branch intentionally left blank or can include a comment for clarity.
-}
-
-</script>
-
+                // Create a cube for each image
+                const cube = document.createElement('a-box');
+                cube.setAttribute('src', `#${imgId}`);
+                cube.setAttribute('position', `${x} 1.5 ${z}`);
+                cube.setAttribute('width', '3'); // Cube size
+                cube.setAttribute('height', '3'); // Cube size
+                cube.setAttribute('depth', '3'); // Cube size
+                document.querySelector('a-scene').appendChild(cube);
+            }
         </script>
     </a-scene>
 </body>
