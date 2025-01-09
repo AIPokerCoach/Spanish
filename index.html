@@ -71,7 +71,7 @@
 
         
        <!-- Enhanced Camera with Mobile Controls -->
-<a-entity id="cameraRig" movement-controls="fly: false; speed: 0.35" position="-5 1.4 20">
+<a-entity id="cameraRig" movement-controls="fly: false; speed: 0.35" position="-5 4.2 20">
     <!-- Camera entity with look-controls and virtual joystick -->
     <a-camera look-controls>
         <!-- Virtual joystick for movement on mobile -->
@@ -110,13 +110,13 @@
 
         <!-- Floor with Azulejos -->
     <!-- Transparent Glass-Like Floor -->
-<a-plane position="0 0 0" rotation="-90 0 0" width="125" height="125" color="#D3D3D3" opacity="0.7" transparent="true"></a-plane>
+<a-plane position="0 0 0" rotation="-90 0 0" width="375" height="375" color="#D3D3D3" opacity="0.7" transparent="true"></a-plane>
 
         
 
         <!-- Cubes -->
         <script>
-            const spacing = 7.2; // Spacing between cubes
+            const spacing = 21.6; // Spacing between cubes
             const rows = 15; // Rows
             const cols = 15; // Columns
             
@@ -128,10 +128,10 @@
                 // Create a cube for each image
                 const cube = document.createElement('a-box');
                 cube.setAttribute('src', `#${imgId}`);
-                cube.setAttribute('position', `${x} 1.5 ${z}`);
-                cube.setAttribute('width', '3'); // Cube size
-                cube.setAttribute('height', '3'); // Cube size
-                cube.setAttribute('depth', '3'); // Cube size
+                cube.setAttribute('position', `${x} 4.5 ${z}`);
+                cube.setAttribute('width', '9'); // Cube size
+                cube.setAttribute('height', '9'); // Cube size
+                cube.setAttribute('depth', '9'); // Cube size
                 document.querySelector('a-scene').appendChild(cube);
             }
         </script>
